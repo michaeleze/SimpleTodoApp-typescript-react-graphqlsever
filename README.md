@@ -4,7 +4,7 @@
 Create a single page web application to manage a task list using React.
 
 ### Requirements
-The application provides the functionality to view the list of to-do items, create them, and mark them as done. The front-end technology is based on JavaScript / HTML / CSS. Tasks are stored using a Rest service. Please realize data transfer between web client and back-end
+The application provides the functionality to view the list of to-do items, create them, and mark them as done. The front-end technology is based on JavaScript (or TypeScript) / HTML / CSS. Tasks are stored using a Rest service. Please realize data transfer between web client and back-end
 service.
 
 ### Additional Information
