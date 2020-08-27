@@ -1,0 +1,13 @@
+.option--edit {
+    border: none;
+    box-sizing: border-box;
+    margin: 0 10px;
+    padding: 10px;
+}
+
+.option--delete {
+    border: none;
+    box-sizing: border-box;
+    margin: 0 10px;
+    padding: 10px;
+}
