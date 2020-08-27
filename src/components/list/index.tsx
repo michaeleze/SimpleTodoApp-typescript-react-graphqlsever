@@ -1,23 +1,21 @@
 import React from 'react';
 import './index.css';
 import Option from "../option";
+import { IList } from './index.interface';
 
-const optionLabel = {
-    edit: 'edit',
-    delete: 'delete',
-};
-
-
-const List: React.FC<any> = (props) => {
-    console.log(props);
+const List: React.FC<IList> = (props) => {
+    const {
+        options,
+        list
+    } = props;
 
     return (
         <div className="list--container">
             <div className="list-item--text">
-                list
+                {list}
             </div>
             <div className="list-item--edit">
-                <Option label={optionLabel}/>
+                <Option {...options} />
             </div>
         </div>
     );

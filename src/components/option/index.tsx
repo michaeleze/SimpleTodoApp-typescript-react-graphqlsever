@@ -3,15 +3,17 @@ import './index.css';
 import { IOption } from './index.interface';
 
 const Option: React.FC<IOption> = (props) => {
-    const { handleDelete, handleEdit, label } = props;
+    const { handles, label } = props;
+    const { handleEdit, handleDelete } = handles;
+    const { edit, remove } = label;
 
     return (
         <>
             <button className="option--edit" onClick={handleEdit}>
-                {label.edit}
+                {edit}
             </button>
             <button className="option--delete" onClick={handleDelete}>
-                {label.delete}
+                {remove}
             </button>
         </>
     );
