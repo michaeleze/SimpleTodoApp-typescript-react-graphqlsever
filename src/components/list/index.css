@@ -4,7 +4,8 @@
     box-sizing: border-box;
     color: black;
     display: grid;
-    grid-template-areas:  ". text text text text ."  ". . . . . edit";
+    grid-template-areas:  ". text text text text ."  ". . . . edit edit";
+    margin: 15px 0;
     min-height: 100px;
     width: 100%;
     padding: 10px;

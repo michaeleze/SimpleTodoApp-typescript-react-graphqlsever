@@ -9,7 +9,7 @@
     display: grid;
     grid-template-areas:  "list list list list list list"  ". . . . add add";
     min-height: 250px;
-    width: 300px;
+    min-width: 300px;
     padding: 15px;
 }
 

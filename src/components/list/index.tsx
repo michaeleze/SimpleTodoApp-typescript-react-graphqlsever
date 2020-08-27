@@ -12,7 +12,7 @@ const List: React.FC<IList> = (props) => {
     return (
         <div className="list--container">
             <div className="list-item--text">
-                {list}
+                {list.text}
             </div>
             <div className="list-item--edit">
                 <Option {...options} />
