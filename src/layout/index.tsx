@@ -5,24 +5,21 @@ import React, {
     useState,
 } from 'react';
 import './index.css';
-import {formatList} from '../index.utility';
+import { todo } from "../service";
 
 const ListTemp = lazy(() => import('../components/list'));
-
-const tasks = {
-    1: {id: '1', text: 'Read description of programming challenge'},
-    2: {id: '2', text: 'Implement awesome web app'},
-    3: {id: '3', text: 'Polish project'},
-    9: {id: '9', text: 'Send solution to LogMeIn'},
-};
 
 const Layout: React.FC = () => {
     const [list, updateList] = useState<Array<{ id: number, text: string }>>([]);
 
     useEffect(() => {
-        const formattedList = formatList(tasks);
-
-        updateList(formattedList as any);
+        todo.getTaskList();
+        todo.subscribe((data: any) => {
+            updateList(data);
+        })
+        todo.unsubscribe(() => {
+            return null;
+        })
     }, [])
 
     const handleAdd = () => {
