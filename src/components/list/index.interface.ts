@@ -1,6 +1,11 @@
 import {IOption} from "../option/index.interface";
 
 export interface IList {
-    list: {id: number, text: string};
-    options: IOption
+    list: {
+        id: string;
+        enableEdit: boolean;
+        text: string;
+        handleEditTask(id: string): void;
+    };
+    options: IOption;
 }

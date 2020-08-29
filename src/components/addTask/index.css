@@ -1,0 +1,38 @@
+.add-container {
+    display: grid;
+    grid-template-areas:  "text edit"  "text edit";
+    margin: 15px 0;
+    min-height: 100px;
+    width: 100%;
+    padding: 10px;
+}
+
+.add-edit {
+    grid-area: edit;
+    padding: 10px 0;
+}
+
+.add-edit--button {
+    background-color: deepskyblue ;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    margin: 10px 0 0 0;
+    width: 40px;
+    height: 40px;
+}
+
+.add-input {
+    grid-area: text;
+    padding: 20px 0 10px 0;
+}
+
+.add--input--field {
+    background-color: white;
+    border: none;
+    border-radius: 16px ;
+    box-sizing: border-box;
+    width: 90%;
+    min-height: 40px;
+    padding:0 10px;
+}

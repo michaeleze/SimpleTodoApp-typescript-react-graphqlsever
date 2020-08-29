@@ -8,11 +8,17 @@ const List: React.FC<IList> = (props) => {
         options,
         list
     } = props;
+    const { enableEdit, handleEditTask, id, text } = list;
 
     return (
         <div className="list--container">
-            <div className="list-item--text">
-                {list.text}
+            <div className="list-item-field">
+                <input
+                    disabled={enableEdit}
+                    className="list-item__text--input"
+                    value={text}
+                    onChange={() => handleEditTask(id)}
+                />
             </div>
             <div className="list-item--edit">
                 <Option {...options} />
