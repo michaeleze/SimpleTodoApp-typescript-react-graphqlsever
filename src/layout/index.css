@@ -1,18 +1,18 @@
 .layout-add {
-    grid-area: add;
+  grid-area: add;
 }
 
 .layout-container {
-    background-color: aquamarine;
-    border-radius: 16px ;
-    box-sizing: border-box;
-    display: grid;
-    grid-template-areas:   "add add" "list list";
-    min-height: 18vh;
-    min-width: 30vw;
-    padding: 15px 25px;
+  background-color: aquamarine;
+  border-radius: 16px ;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-areas:   "add add" "list list";
+  min-height: 18vh;
+  min-width: 30vw;
+  padding: 15px 25px;
 }
 
 .layout-list {
-    grid-area: list;
+  grid-area: list;
 }

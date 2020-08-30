@@ -30,9 +30,9 @@
 .add--input--field {
     background-color: white;
     border: none;
-    border-radius: 16px ;
+    border-radius: 16px;
     box-sizing: border-box;
     width: 90%;
     min-height: 40px;
-    padding:0 10px;
+    padding: 0 10px;
 }
