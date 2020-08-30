@@ -22,7 +22,7 @@ class ToDoService extends Observable {
 
         const uniqueId = Math.floor(Math.random() * 20);
 
-        const response = await fetch('http://localhost:3000/api/tasks', {
+        fetch('http://localhost:3000/api/tasks', {
             body: `{\"id\":\"${uniqueId}\",\"text\":\"${task}\"}`,
             headers: {
                 "Content-Type": "application/json"
@@ -34,10 +34,8 @@ class ToDoService extends Observable {
     public updateTask(id: string, text: string) {
         this.getInstance();
 
-        const task = {id: {id, text}};
-
         fetch(`http://localhost:3000/api/tasks/${id}`, {
-            body: `{\"id\":\"${id}\",\"text\":\"${task}\"}`,
+            body: `{\"id\":\"${id}\",\"text\":\"${text}\"}`,
             headers: {
                 "Content-Type": "application/json"
             },
