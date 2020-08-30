@@ -1,5 +1,4 @@
-import { Observable } from "./observable";
-import { formatList } from "../index.utility";
+import { Observable } from './observable';
 
 class ToDoService extends Observable {
     private static instance: ToDoService;
@@ -10,75 +9,80 @@ class ToDoService extends Observable {
         }
     }
 
-    public getTaskList() {
+    public async getTaskList() {
         this.getInstance();
 
-        fetch("http://localhost:3000/api/tasks", {
+        const response = await fetch('http://localhost:3000/api/tasks', {
             method: 'GET'
-        })
-            .then(response => response.json() )
-            .then(response => {
-                const formattedList = formatList(response);
+        });
 
-                this.notify(formattedList)
-            })
-            .catch(error => { throw new Error(error) })
+        if(!response) {
+            Promise.reject('No response');
+        }
+
+        return Promise.resolve(response);
     }
 
-    public createNewTask(task: string) {
+    public async createNewTask(task: string) {
         this.getInstance();
 
-        const uniqueId = Math.random().toString(36).substr(2, 9);
+        const uniqueId = Math.floor(Math.random() * 20);
 
-        fetch("http://localhost:3000/api/tasks", {
-            body: "{\"id\":\"2e\",\"text\":\"chade\"}",
+        const response = await fetch('http://localhost:3000/api/tasks', {
+            body: `{\"id\":\"${uniqueId}\",\"text\":\"${task}\"}`,
             headers: {
                 "Content-Type": "application/json"
             },
-            method: "POST"
-        })
-            .then(response => response.json() )
-            .then(response => {
-                const formattedList = formatList(response);
+            method: 'POST'
+        });
 
-                this.notify(formattedList)
-            })
-            .catch(error => { throw new Error(error) })
+        if(!response) {
+            Promise.reject('No response');
+        }
+
+        this.notify(this.getTaskList)
+
+        return Promise.resolve(response);
     }
 
-    public updateTask(id: string, text: string) {
+    public async updateTask(id: string, text: string) {
         this.getInstance();
-        fetch("http://localhost:3000/api/tasks/001", {
-            body: "{\"id\":\"001\",\"text\":\"my great new task\"}",
+
+        const task = {id: {id, text}};
+
+        const response = await fetch(`http://localhost:3000/api/tasks/${id}`, {
+            body: `{\"id\":\"${id}\",\"text\":\"${task}\"}`,
             headers: {
                 "Content-Type": "application/json"
             },
-            method: "PUT"
-        })
-            .then(response => response.json() )
-            .then(response => {
-                const formattedList = formatList(response);
+            method: 'PUT'
+        });
 
-                this.notify(formattedList)
-            })
-            .catch(error => { throw new Error(error) })
+        if(!response) {
+            Promise.reject('No response');
+        }
+
+        return Promise.resolve(response);
     }
 
-    public deleteTask(id: string) {
+    public async deleteTask(id: string, text: string) {
         this.getInstance();
 
-        fetch("http://localhost:3000/api/tasks/001", {
-            body: "{\"id\":\"001\",\"text\":\"my great new task\"}",
-            method: "POST",
-            mode: 'no-cors'
-        })
-            .then(response => response.json() )
-            .then(response => {
-                const formattedList = formatList(response);
+        const task = {id: {id: id, text: text}};
 
-                this.notify(formattedList)
-            })
-            .catch(error => { throw new Error(error) })
+        const response = await fetch(`http://localhost:3000/api/tasks/${id}`, {
+            body: `{"id": ${id}, "text": ${task}`,
+            headers: {
+                "Content-Type": "application/json"
+            },
+            method: 'DELETE'
+        });
+
+        if(!response) {
+            Promise.reject('No response');
+        }
+
+        return Promise.resolve(response);
     }
 }
 

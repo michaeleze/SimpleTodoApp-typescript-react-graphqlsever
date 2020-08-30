@@ -1,5 +1,6 @@
 export interface IOption {
-    handleDeleteTask: (id: string) => void;
-    handleUpdateTask: (id: string) => void;
+    handleDeleteTask: (id: string, text: string) => void;
+    handleOpenModal(id: string): void;
     id: string;
+    text: string;
 }

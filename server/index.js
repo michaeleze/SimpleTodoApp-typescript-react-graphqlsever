@@ -17,7 +17,6 @@ app.use(express.static('public'));
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3001');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
@@ -45,7 +44,7 @@ app.post('/api/tasks', (req, res) => {
     id: req.body.id,
     text: req.body.text,
   };
-  res.status(204).send();
+  res.status(204).send(tasks);
 });
 
 app.put('/api/tasks/:id', (req, res) => {
@@ -59,7 +58,7 @@ app.put('/api/tasks/:id', (req, res) => {
   res.status(204).send();
 });
 
-app.delete('/api/tasks/:id', (req, res) => {
+app.delete('/api/tasks/:id', function(req, res) {
   if (!tasks[req.params.id]) {
     res.status(404).send();
     return;
