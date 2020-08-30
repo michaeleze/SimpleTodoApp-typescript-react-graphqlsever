@@ -1,13 +1,7 @@
-import { Observable } from './observable';
+import {Observable} from './observable';
 
 class ToDoService extends Observable {
     private static instance: ToDoService;
-
-    private getInstance() {
-        if (!ToDoService.instance) {
-            ToDoService.instance = new ToDoService();
-        }
-    }
 
     public async getTaskList() {
         this.getInstance();
@@ -16,12 +10,12 @@ class ToDoService extends Observable {
             method: 'GET'
         });
 
-        if(!response) {
+        if (!response) {
             Promise.reject('No response');
         }
 
         return Promise.resolve(response);
-    }
+    };
 
     public async createNewTask(task: string) {
         this.getInstance();
@@ -35,54 +29,38 @@ class ToDoService extends Observable {
             },
             method: 'POST'
         });
+    };
 
-        if(!response) {
-            Promise.reject('No response');
-        }
-
-        this.notify(this.getTaskList)
-
-        return Promise.resolve(response);
-    }
-
-    public async updateTask(id: string, text: string) {
+    public updateTask(id: string, text: string) {
         this.getInstance();
 
         const task = {id: {id, text}};
 
-        const response = await fetch(`http://localhost:3000/api/tasks/${id}`, {
+        fetch(`http://localhost:3000/api/tasks/${id}`, {
             body: `{\"id\":\"${id}\",\"text\":\"${task}\"}`,
             headers: {
                 "Content-Type": "application/json"
             },
             method: 'PUT'
         });
+    };
 
-        if(!response) {
-            Promise.reject('No response');
-        }
-
-        return Promise.resolve(response);
-    }
-
-    public async deleteTask(id: string, text: string) {
+    public deleteTask(id: string, text: string) {
         this.getInstance();
 
-        const task = {id: {id: id, text: text}};
-
-        const response = await fetch(`http://localhost:3000/api/tasks/${id}`, {
-            body: `{"id": ${id}, "text": ${task}`,
+        fetch(`http://localhost:3000/api/tasks/${id}`, {
+            body: `{\"id\":\"${id}\",\"text\":\"${text}\"}`,
             headers: {
                 "Content-Type": "application/json"
             },
             method: 'DELETE'
         });
+    };
 
-        if(!response) {
-            Promise.reject('No response');
+    private getInstance() {
+        if (!ToDoService.instance) {
+            ToDoService.instance = new ToDoService();
         }
-
-        return Promise.resolve(response);
     }
 }
 

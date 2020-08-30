@@ -1,4 +1,4 @@
-# Coding Challenge: To-Do List
+# Coding Challenge: To-Do Index
 
 ### Objective
 Create a single page web application to manage a task list using React.

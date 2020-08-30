@@ -1,26 +1,38 @@
 import ReactModal from 'react-modal';
-import React from 'react';
-import { IModal } from './index.interface';
+import React, {useState} from 'react';
+import {IModal} from './index.interface';
+import './index.css';
 
 const Modal: React.FC<IModal> = (props) => {
+    const [value, setValue] = useState<string>();
     const {
-        handleChange,
         handleCloseModal,
         handleUpdateTask,
-        item,
+        modalItem,
         modal,
     } = props;
 
+    const newTask = {id: modalItem?.id, task: value};
+
+    const Change = (e: any) => {
+        setValue(e.target.value);
+    };
+
+    const handleOnAfterOpen = () => {
+        setValue(modalItem.text);
+    };
+
     return (
         <ReactModal
+            onAfterOpen={handleOnAfterOpen}
             ariaHideApp={false}
             isOpen={modal}
             contentLabel="Minimal Modal Example"
         >
             <div className="modal-content">
-                <input onChange={handleChange} value={item?.text && item?.text} />
-                <span onClick={() => item?.id && handleUpdateTask(item.id)}> Accept </span>
-                <span onClick={handleCloseModal}> Cancel </span>
+                <input className="modal-input--field" onChange={Change} value={value}/>
+                <span className="modal-text--accept" onClick={() => handleUpdateTask(newTask)}> Accept </span>
+                <span className="modal-text--reject" onClick={handleCloseModal}> Cancel </span>
             </div>
         </ReactModal>
     )

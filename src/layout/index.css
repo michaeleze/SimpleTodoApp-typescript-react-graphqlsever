@@ -8,9 +8,9 @@
     box-sizing: border-box;
     display: grid;
     grid-template-areas:   "add add" "list list";
-    min-height: 250px;
-    min-width: 300px;
-    padding: 15px;
+    min-height: 18vh;
+    min-width: 30vw;
+    padding: 15px 25px;
 }
 
 .layout-list {

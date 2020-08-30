@@ -12,10 +12,10 @@ import Modal from "../components/modal";
 const ListTemplate = lazy(() => import('../components/list'));
 
 const Layout: React.FC = () => {
-    const [ list, updateList ] = useState<Array<{ id: string, text: string }>>([]);
-    const [ task, addTask ] = useState<string>(null as unknown as string);
-    const [ modal, showModal ] = useState<boolean>(false);
-    const [ item, setItem ] = useState<any>();
+    const [list, updateList] = useState<Array<{ id: string, text: string }>>([]);
+    const [task, addTask] = useState<string>(null as unknown as string);
+    const [modal, showModal] = useState<boolean>(false);
+    const [modalItem, setmodalItem] = useState<any>();
 
     useEffect(() => {
         getTaskList()
@@ -37,8 +37,9 @@ const Layout: React.FC = () => {
         addTask('');
     };
 
-    const handleUpdateTask = (id: string,) => {
-        todo.updateTask(id, task);
+    const handleUpdateTask = (value: any) => {
+        console.log(value)
+        todo.updateTask(value.id, value.task);
         handleCloseModal();
         addTask('');
     };
@@ -50,7 +51,7 @@ const Layout: React.FC = () => {
     const handleOpenModal = (id: string) => {
         showModal(true)
         const item = list.find((item: any) => item.id === id)
-        setItem(item);
+        setmodalItem(item);
     };
 
     const handleCloseModal = () => {
@@ -60,10 +61,9 @@ const Layout: React.FC = () => {
     return (
         <div className="layout-container">
             <Modal
-                handleChange={handleChange}
                 handleCloseModal={handleCloseModal}
                 handleUpdateTask={handleUpdateTask}
-                item={item}
+                modalItem={modalItem}
                 modal={modal}
             />
             <div className="layout-add">
@@ -71,25 +71,11 @@ const Layout: React.FC = () => {
             </div>
             <div className="layout-list">
                 <Suspense fallback={<div>Loading...</div>}>
-                    {
-                        list?.map((item) => {
-                            const list = {...item, handleChange}
-                            const options = {
-                                handleDeleteTask,
-                                handleChange: handleChange,
-                                handleOpenModal: handleOpenModal,
-                                id: item.id,
-                                text: item.text,
-                            };
-                            const listProps = {list, options};
-
-                            return (
-                                <div key={item.id}>
-                                    <ListTemplate {...listProps}/>
-                                </div>
-                            )
-                        })
-                    }
+                    <ListTemplate
+                        handleDeleteTask={handleDeleteTask}
+                        handleOpenModal={handleOpenModal}
+                        list={list}
+                    />
                 </Suspense>
             </div>
         </div>
