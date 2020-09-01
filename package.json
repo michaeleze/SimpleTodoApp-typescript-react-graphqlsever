@@ -8,7 +8,7 @@
     "start:app": "react-scripts start",
     "start": "concurrently \"npm run start:server\" \"npm run start:app\"",
     "build": "react-scripts build",
-    "test": "react-scripts test --watch",
+    "test": "react-scripts test --watch --coverage",
     "eject": "react-scripts eject"
   },
   "private": true,

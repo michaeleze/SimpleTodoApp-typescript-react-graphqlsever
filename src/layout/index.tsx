@@ -5,7 +5,7 @@ import React, {
   useState,
 } from 'react';
 import './index.css';
-import {todo} from "../service";
+import { todo } from "../service";
 import AddTask from "../components/addTask";
 import Modal from "../components/modal";
 
@@ -22,9 +22,14 @@ const Layout: React.FC = () => {
   }, [updateList]);
 
   const getTaskList = () => {
-    todo.getTaskList()
-      .then(response => response.json())
-      .then(response => updateList(Object.values(response)))
+    todo.getTaskList();
+    todo.subscribe((data: any) => {
+      updateList(data);
+    });
+
+    todo.unsubscribe(() => {
+      return null
+    });
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,17 +39,20 @@ const Layout: React.FC = () => {
 
   const handleCreateNewTask = () => {
     todo.createNewTask(task);
+    getTaskList();
     addTask('');
   };
 
   const handleUpdateTask = (value: any) => {
     todo.updateTask(value.id, value.task);
+    getTaskList();
     handleCloseModal();
     addTask('');
   };
 
   const handleDeleteTask = (id: string, text: string) => {
     todo.deleteTask(id, text);
+    getTaskList();
   };
 
   const handleOpenModal = (id: string) => {

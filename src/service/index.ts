@@ -11,13 +11,10 @@ class ToDoService extends Observable {
   }
 
   public async getTaskList() {
-    const response = await useFetch('http://localhost:3000/api/tasks', {method: 'GET'});
-
-    if (!response) {
-      Promise.reject('No response');
-    }
-
-    return Promise.resolve(response);
+    useFetch('http://localhost:3000/api/tasks', {method: 'GET'})
+      .then(response => response && response.json())
+      .then(response => this.notify(Object.values(response)))
+      .catch(err => {console.log(err)});
   };
 
   public async createNewTask(task: string) {
