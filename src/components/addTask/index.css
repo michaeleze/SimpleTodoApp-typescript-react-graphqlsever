@@ -8,22 +8,28 @@
 }
 
 .add-edit {
-    grid-area: edit;
-    padding: 10px 0;
+    align-self: center;
 }
 
 .add-edit--button {
     background-color: #54fffb ;
-    border-radius: 50%;
+    border-radius: 30px;
     border: none;
+    box-sizing: border-box;
+    color: black;
     cursor: pointer;
-    margin: 10px 0 0 0;
-    width: 40px;
-    height: 40px;
+    outline: none;
+    padding: 12px 10px;
+    transition: .4s ease-in;
+    width: 10rem;
+}
+
+.add-edit--button:hover {
+    color: #54fffb;
+    background: white;
 }
 
 .add-input {
-    grid-area: text;
     padding: 20px 0 10px 0;
 }
 

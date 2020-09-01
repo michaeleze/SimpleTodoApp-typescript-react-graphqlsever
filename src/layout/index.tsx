@@ -19,7 +19,7 @@ const Layout: React.FC = () => {
 
   useEffect(() => {
     getTaskList()
-  }, []);
+  }, [updateList]);
 
   const getTaskList = () => {
     todo.getTaskList()
@@ -38,7 +38,6 @@ const Layout: React.FC = () => {
   };
 
   const handleUpdateTask = (value: any) => {
-    console.log(value)
     todo.updateTask(value.id, value.task);
     handleCloseModal();
     addTask('');
