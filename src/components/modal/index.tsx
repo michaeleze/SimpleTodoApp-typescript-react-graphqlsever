@@ -24,10 +24,10 @@ const Modal: React.FC<IModal> = (props) => {
 
   return (
     <ReactModal
-      onAfterOpen={handleOnAfterOpen}
       ariaHideApp={false}
-      isOpen={modal}
       contentLabel="Minimal Modal Example"
+      isOpen={modal}
+      onAfterOpen={handleOnAfterOpen}
     >
       <div className="modal-content">
         <input className="modal-input--field" onChange={Change} value={value}/>

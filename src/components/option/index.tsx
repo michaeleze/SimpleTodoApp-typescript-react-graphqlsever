@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.css';
 import { IOption } from './index.interface';
-import { MdRemove } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
 
 const Option: React.FC<IOption> = (props) => {
@@ -18,7 +18,7 @@ const Option: React.FC<IOption> = (props) => {
                 <FaEdit />
             </button>
             <button className="option--delete" onClick={() => handleDeleteTask(id, text)}>
-                <MdRemove />
+                <MdDelete />
             </button>
         </>
     );

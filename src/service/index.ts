@@ -1,14 +1,17 @@
 import {Observable} from './observable';
+import { useFetch } from './utility';
 
 class ToDoService extends Observable {
   private static instance: ToDoService;
 
-  public async getTaskList() {
+  constructor() {
+    super()
     this.getInstance();
+    return ToDoService.instance;
+  }
 
-    const response = await fetch('http://localhost:3000/api/tasks', {
-      method: 'GET'
-    });
+  public async getTaskList() {
+    const response = await useFetch('http://localhost:3000/api/tasks', {method: 'GET'});
 
     if (!response) {
       Promise.reject('No response');
@@ -18,46 +21,29 @@ class ToDoService extends Observable {
   };
 
   public async createNewTask(task: string) {
-    this.getInstance();
-
     const uniqueId = Math.floor(Math.random() * 20);
+    const body =  `{\"id\":\"${uniqueId}\",\"text\":\"${task}\"}`;
 
-    fetch('http://localhost:3000/api/tasks', {
-      body: `{\"id\":\"${uniqueId}\",\"text\":\"${task}\"}`,
-      headers: {
-        "Content-Type": "application/json"
-      },
-      method: 'POST'
-    });
+    await useFetch('http://localhost:3000/api/tasks', {body, method: 'POST'});
+
   };
 
-  public updateTask(id: string, text: string) {
-    this.getInstance();
+  public async updateTask(id: string, text: string) {
+    const body = `{\"id\":\"${id}\",\"text\":\"${text}\"}`;
 
-    fetch(`http://localhost:3000/api/tasks/${id}`, {
-      body: `{\"id\":\"${id}\",\"text\":\"${text}\"}`,
-      headers: {
-        "Content-Type": "application/json"
-      },
-      method: 'PUT'
-    });
+    await useFetch(`http://localhost:3000/api/tasks/${id}`, {body, method: 'PUT'});
+
   };
 
-  public deleteTask(id: string, text: string) {
-    this.getInstance();
+  public async deleteTask(id: string, text: string) {
+    const body =  `{\"id\":\"${id}\",\"text\":\"${text}\"}`;
 
-    fetch(`http://localhost:3000/api/tasks/${id}`, {
-      body: `{\"id\":\"${id}\",\"text\":\"${text}\"}`,
-      headers: {
-        "Content-Type": "application/json"
-      },
-      method: 'DELETE'
-    });
+    await useFetch(`http://localhost:3000/api/tasks/${id}`, {body, method: 'DELETE'});
   };
 
   private getInstance() {
     if (!ToDoService.instance) {
-      ToDoService.instance = new ToDoService();
+      ToDoService.instance = this;
     }
   }
 }
