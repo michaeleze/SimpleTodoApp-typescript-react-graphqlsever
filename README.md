@@ -14,16 +14,16 @@ The server-side implementation is provided and implemented based on Node.js. The
 
 --------------------------------------------------------
 
-# Back-end Service
+# Front-end App
 
 ## Overview
 
-The back-end is based on [Express](http://http://expressjs.com/), a Node.js web application framework.
+The front-end is based on [reactjs]
 
 
 ## Setup
 
-To setup the server install Node.js in Version 12.18.3 or newer from the [Node.Js Website](http://nodejs.org/).
+To setup the app install Node.js in Version 12.18.3 or newer from the [Node.Js Website](http://nodejs.org/).
 Then run the following command in the project root.
 This downloads all required dependencies to run the Server.
 
@@ -31,12 +31,28 @@ This downloads all required dependencies to run the Server.
 npm install
 ```
 
-## Run the Server
+## Run the Application
 
 Run the following command in the project root:
 
 ```bash
 npm start
+```
+
+
+
+# Back-end Service
+
+## Overview
+
+The back-end is based on [Express](http://http://expressjs.com/), a Node.js web application framework.
+
+## Run the Server
+
+Run the following command in the project root:
+
+```bash
+npm start:server
 ```
 
 ## Server Interface Description
