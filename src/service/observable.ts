@@ -1,3 +1,8 @@
+/**
+ *  One of my favorite patterns
+ *  Code is created by Michael Eze<michaeleze3@gmail.com>
+ *  Please do not reproduce
+ */
 export class Observable {
     private observers = [];
 

@@ -1,7 +1,8 @@
 {
-  "name": "todoapp",
+  "name": "TODOAPP",
   "version": "1.0.0",
-  "description": "",
+  "author": "Michael Eze<Michaeleze3@gmail.com>",
+  "description": "A simple TODO app created using REACT and Express server",
   "main": "server/index.js",
   "scripts": {
     "start:server": "nodemon server/index.js",
