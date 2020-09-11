@@ -5,10 +5,10 @@
   "description": "A simple TODO app created using REACT and Express server",
   "main": "server/index.js",
   "scripts": {
-    "start:server": "nodemon server/index.js",
+    "server": "nodemon server/index.gql",
     "start:app": "react-scripts start",
-    "start": "concurrently \"npm run start:server\" \"npm run start:app\"",
     "build": "react-scripts build",
+    "start": "npm run build && npm run start:server",
     "test": "react-scripts test --watch --coverage",
     "eject": "react-scripts eject"
   },
@@ -33,6 +33,7 @@
     "body-parser": "1.19.0",
     "concurrently": "^5.3.0",
     "express": "4.17.1",
+    "graphql-yoga": "^1.18.3",
     "install": "^0.13.0",
     "morgan": "1.10.0",
     "react": "^16.13.1",

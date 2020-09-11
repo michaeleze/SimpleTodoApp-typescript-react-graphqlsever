@@ -32,7 +32,9 @@ class ToDoService extends Observable {
   public async updateTask(id: string, text: string) {
     const body = `{\"id\":\"${id}\",\"text\":\"${text}\"}`;
 
-    await useFetch(`http://localhost:3000/api/tasks/${id}`, {body, method: 'PUT'});
+   useFetch(`http://localhost:3000/api/tasks/${id}`, {body, method: 'PUT'})
+     .then(response => response && response.json())
+     .then(response => console.log(Object.values(response)))
   };
 
   public async deleteTask(id: string, text: string) {
