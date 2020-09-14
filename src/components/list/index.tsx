@@ -23,7 +23,7 @@ const List: React.FC<IList> = (props) => {
           const listProps = {list, options};
 
           return (
-            <div key={item.id}>
+            <div key={item.text}>
               <ListItem {...listProps}/>
             </div>
           )

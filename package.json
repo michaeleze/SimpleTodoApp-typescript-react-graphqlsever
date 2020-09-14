@@ -2,19 +2,21 @@
   "name": "TODOAPP",
   "version": "1.0.0",
   "author": "Michael Eze<Michaeleze3@gmail.com>",
-  "description": "A simple TODO app created using REACT and Express server",
-  "main": "server/index.js",
+  "description": "A simple TODO app created using REACT and Graphql server",
+  "main": "old-server/index.js",
   "scripts": {
-    "server": "nodemon server/index.gql",
-    "start:app": "react-scripts start",
     "build": "react-scripts build",
-    "start": "npm run build && npm run start:server",
+    "start": "npm run build && react-scripts start",
     "test": "react-scripts test --watch --coverage",
     "eject": "react-scripts eject"
   },
   "private": true,
   "engines": {
     "node": ">=12.18.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaeleze/todo-graphql-server.git"
   },
   "browserslist": {
     "production": [
@@ -30,17 +32,13 @@
   },
   "dependencies": {
     "@types/react-modal": "^3.10.6",
-    "body-parser": "1.19.0",
-    "concurrently": "^5.3.0",
-    "express": "4.17.1",
     "graphql-yoga": "^1.18.3",
     "install": "^0.13.0",
-    "morgan": "1.10.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-icons": "^3.11.0",
     "react-modal": "^3.11.2",
-    "react-scripts": "3.4.3",
+    "react-scripts": "^3.4.3",
     "typescript": "^4.0.2"
   },
   "devDependencies": {
@@ -51,7 +49,6 @@
     "@types/react-dom": "16.9.4",
     "@types/testing-library__jest-dom": "^5.9.2",
     "@types/testing-library__react": "^10.2.0",
-    "nodemon": "2.0.4",
     "ts-jest": "^26.3.0"
   }
 }

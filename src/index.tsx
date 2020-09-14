@@ -4,6 +4,11 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+/**
+ * Source code to the Application: See https://github.com/michaeleze/SimpleTodoApp-typescript-react-graphqlsever
+ * Source code to the GraphQL Server: See https://github.com/michaeleze/todo-graphql-server
+ */
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

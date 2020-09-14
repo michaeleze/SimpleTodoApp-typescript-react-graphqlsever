@@ -18,7 +18,7 @@ const Layout: React.FC = () => {
   const [modalItem, setmodalItem] = useState<any>();
 
   useEffect(() => {
-    getTaskList()
+    getTaskList();
   }, [updateList]);
 
   const getTaskList = () => {
@@ -38,21 +38,18 @@ const Layout: React.FC = () => {
   };
 
   const handleCreateNewTask = () => {
-    todo.createNewTask(task);
-    getTaskList();
+    todo.addTask(task);
     addTask('');
   };
 
   const handleUpdateTask = (value: any) => {
     todo.updateTask(value.id, value.task);
-    getTaskList();
     handleCloseModal();
     addTask('');
   };
 
   const handleDeleteTask = (id: string, text: string) => {
     todo.deleteTask(id, text);
-    getTaskList();
   };
 
   const handleOpenModal = (id: string) => {

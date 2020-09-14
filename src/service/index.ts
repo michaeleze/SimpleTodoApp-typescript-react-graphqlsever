@@ -4,44 +4,73 @@
  *  Please do not reproduce
  */
 import {Observable} from './observable';
-import { useFetch } from './utility';
 
 class ToDoService extends Observable {
   private static instance: ToDoService;
+  private url: string;
 
-  constructor() {
+  constructor(url: string) {
     super();
+    this.url = url;
     this.getInstance();
     return ToDoService.instance;
   }
 
-  public async getTaskList() {
-    useFetch('http://localhost:3000/api/tasks', {method: 'GET'})
-      .then(response => response && response.json())
-      .then(response => this.notify(Object.values(response)))
-      .catch(err => {console.log(err)});
+  public getTaskList() {
+    const body = JSON.stringify({query: "{getTaskList { \n id \n text \n }}"});
+
+    this.useFetch(body, 'POST', 'getTaskList');
   };
 
-  public async createNewTask(task: string) {
+  public addTask(task: string) {
     const uniqueId = Math.floor(Math.random() * 20);
-    const body =  `{\"id\":\"${uniqueId}\",\"text\":\"${task}\"}`;
+    const body = JSON.stringify({
+      query: "mutation ($id: ID!, $text: String!){ addTask (id: $id, text: $text){ \n id \n text \n }}",
+      variables: {
+        id: uniqueId,
+        text: task
+      }
+    });
 
-    await useFetch('http://localhost:3000/api/tasks', {body, method: 'POST'});
+    this.useFetch(body, 'POST', 'addTask');
   };
 
-  public async updateTask(id: string, text: string) {
-    const body = `{\"id\":\"${id}\",\"text\":\"${text}\"}`;
+  public updateTask(id: string, text: string) {
+    const body = JSON.stringify({
+      query: "mutation ($id: ID!, $text: String!){ updateTask (id: $id, text: $text){ \n id \n text \n }}",
+      variables: {
+        id: id,
+        text: text
+      }
+    });
 
-   useFetch(`http://localhost:3000/api/tasks/${id}`, {body, method: 'PUT'})
-     .then(response => response && response.json())
-     .then(response => console.log(Object.values(response)))
+    this.useFetch(body, 'POST', 'updateTask');
+   };
+
+  public deleteTask(id: string, text: string) {
+    const body = JSON.stringify({
+      query: "mutation ($id: ID!){ deleteTask (id: $id){ \n id \n text \n }}",
+      variables: {
+        id: id,
+      }
+    });
+
+    this.useFetch(body, 'POST', 'deleteTask');
   };
 
-  public async deleteTask(id: string, text: string) {
-    const body =  `{\"id\":\"${id}\",\"text\":\"${text}\"}`;
-
-    await useFetch(`http://localhost:3000/api/tasks/${id}`, {body, method: 'DELETE'});
-  };
+  private useFetch(body: string, method: string, name: string ) {
+    fetch(this.url, {
+      body: body,
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      method: method
+    })
+      .then(response => response?.json())
+      .then(response => this.notify(response['data'][name]))
+      .catch(err => {console.log(err)});
+  }
 
   private getInstance() {
     if (!ToDoService.instance) {
@@ -50,4 +79,5 @@ class ToDoService extends Observable {
   }
 }
 
-export const todo = new ToDoService();
+const url = 'https://todo-app-server-123.herokuapp.com';
+export const todo = new ToDoService(url);
