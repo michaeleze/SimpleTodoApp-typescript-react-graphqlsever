@@ -12,8 +12,8 @@ class ToDoService extends Observable {
   constructor(url: string) {
     super();
     this.url = url;
+    
     this.getInstance();
-    return ToDoService.instance;
   }
 
   public getTaskList() {
@@ -74,7 +74,7 @@ class ToDoService extends Observable {
 
   private getInstance() {
     if (!ToDoService.instance) {
-      ToDoService.instance = this;
+            return this;
     }
   }
 }
