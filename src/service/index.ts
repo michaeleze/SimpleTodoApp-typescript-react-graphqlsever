@@ -12,8 +12,6 @@ class ToDoService extends Observable {
   constructor(url: string) {
     super();
     this.url = url;
-    
-    this.getInstance();
   }
 
   public getTaskList() {
@@ -70,12 +68,6 @@ class ToDoService extends Observable {
       .then(response => response?.json())
       .then(response => this.notify(response['data'][name]))
       .catch(err => {console.log(err)});
-  }
-
-  private getInstance() {
-    if (!ToDoService.instance) {
-            return this;
-    }
   }
 }
 
