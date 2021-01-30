@@ -6,7 +6,6 @@
 import {Observable} from './observable';
 
 class ToDoService extends Observable {
-  private static instance: ToDoService;
   private url: string;
 
   constructor(url: string) {
@@ -71,5 +70,5 @@ class ToDoService extends Observable {
   }
 }
 
-const url = 'https://todo-app-server-123.herokuapp.com';
+const url = 'https://us-central1-sampletodo123.cloudfunctions.net/graphql\n';
 export const todo = new ToDoService(url);
