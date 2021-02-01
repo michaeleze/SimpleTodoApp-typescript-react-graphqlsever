@@ -1,6 +1,6 @@
 .add-container {
     display: grid;
-    grid-template-areas:  "text edit"  "text edit";
+    grid-template-areas: "text edit" "text edit";
     margin: 15px 0;
     min-height: 100px;
     width: 100%;
@@ -12,7 +12,7 @@
 }
 
 .add-edit--button {
-    background-color: #54fffb ;
+    background-color: #89ffcc ;
     border-radius: 30px;
     border: none;
     box-sizing: border-box;

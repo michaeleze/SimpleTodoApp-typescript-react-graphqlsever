@@ -3,13 +3,12 @@
 }
 
 .layout-container {
-  background-color: #ffea6c;
+  background-color: #6c7eff;
+  box-shadow: 0 1px 16px rgba(0 0 0 .4);
   border-radius: 16px ;
   box-sizing: border-box;
   display: grid;
-  grid-template-areas:   "add add" "list list";
-  min-height: 18vh;
-  min-width: 30vw;
+  grid-template-areas: "add add" "list list";
   padding: 15px 25px;
 }
 
