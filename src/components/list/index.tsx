@@ -9,28 +9,27 @@ const List: React.FC<IList> = (props) => {
     list
   } = props;
 
-  return (
-    <>
-      {
-        list?.map((item: any) => {
-          const list = {...item}
-          const options = {
-            handleDeleteTask,
-            handleOpenModal: handleOpenModal,
-            id: item.id,
-            text: item.text,
-          };
-          const listProps = {list, options};
+  const mappedItem = (item: any) => {
+    const options = {
+      handleDeleteTask,
+      handleOpenModal: handleOpenModal,
+      id: item?.id,
+      text: item?.text,
+    };
 
-          return (
-            <div key={item.text}>
-              <ListItem {...listProps}/>
-            </div>
-          )
-        })
-      }
-    </>
-  )
-};
+    return (
+      <>
+        {
+          options.id &&
+          <div key={options.text}>
+            <ListItem options={options}/>
+          </div>
+        }
+      </>
+    )
+  }
+
+  return list?.map(mappedItem)
+}
 
 export default List;

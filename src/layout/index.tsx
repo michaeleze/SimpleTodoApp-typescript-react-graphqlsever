@@ -44,6 +44,7 @@ const Layout: React.FC = () => {
 
   const handleUpdateTask = (value: any) => {
     todo.updateTask(value.id, value.task);
+    console.log(value.id, value.task);
     handleCloseModal();
     addTask('');
   };

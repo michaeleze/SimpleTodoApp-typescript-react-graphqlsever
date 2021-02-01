@@ -70,5 +70,5 @@ class ToDoService extends Observable {
   }
 }
 
-const url = 'https://us-central1-sampletodo123.cloudfunctions.net/graphql\n';
+const url = 'https://us-central1-sampletodo123.cloudfunctions.net/graphqlApp';
 export const todo = new ToDoService(url);

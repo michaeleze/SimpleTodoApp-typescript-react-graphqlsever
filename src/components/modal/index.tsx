@@ -14,8 +14,8 @@ const Modal: React.FC<IModal> = (props) => {
 
   const newTask = {id: modalItem?.id, task: value};
 
-  const Change = (e: any) => {
-    setValue(e.target.value);
+  const Change = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(event.target.value);
   };
 
   const handleOnAfterOpen = () => {
