@@ -1,6 +1,6 @@
 import ReactModal from 'react-modal';
-import React, {useState} from 'react';
-import {IModal} from './index.interface';
+import React, { useState } from 'react';
+import { IModal } from './index.interface';
 import './index.css';
 
 const Modal: React.FC<IModal> = (props) => {
@@ -12,9 +12,9 @@ const Modal: React.FC<IModal> = (props) => {
     modal,
   } = props;
 
-  const newTask = {id: modalItem?.id, task: value};
+  const newTask = { id: modalItem?.id, task: value };
 
-  const Change = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const Change = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setValue(event.target.value);
   };
 
@@ -25,15 +25,22 @@ const Modal: React.FC<IModal> = (props) => {
   return (
     <ReactModal
       ariaHideApp={false}
-      contentLabel="Minimal Modal Example"
       isOpen={modal}
       onAfterOpen={handleOnAfterOpen}
     >
-      <div className="modal-content">
-        <input className="modal-input--field" onChange={Change} value={value}/>
-        <span className="modal-text--accept" onClick={() => handleUpdateTask(newTask)}> Accept </span>
-        <span className="modal-text--reject" onClick={handleCloseModal}> Cancel </span>
-      </div>
+      <table className="modal-content">
+        <tr>
+          <td className='modal-text'>
+            <textarea className="modal-input--field" onChange={Change} value={value} />
+          </td>
+          <td>
+            <div className='modal-options'>
+              <button className="button-accept" onClick={() => handleUpdateTask(newTask)} data-testid="button-accept"> Accept </button>
+              <button className="button-reject" onClick={handleCloseModal} data-testid="button-reject"> Cancel </button>
+            </div>
+          </td>
+        </tr>
+      </table>
     </ReactModal>
   )
 }

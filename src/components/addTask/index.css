@@ -1,44 +1,36 @@
 .add-container {
-    display: grid;
-    grid-template-areas: "text edit" "text edit";
-    margin: 15px 0;
-    min-height: 100px;
-    width: 100%;
-    padding: 10px;
+  margin: 15px 0;
+  width: 100%;
+  padding: 10px;
 }
 
-.add-edit {
-    align-self: center;
+.add-button {
+  color: rgb(0, 153, 255);
+  border-radius: 25px;
+  border: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  outline: none;
+  padding:10px;
+  transition: 0.2s ease-in;
+  width: 10vw;
 }
 
-.add-edit--button {
-    background-color: #89ffcc ;
-    border-radius: 30px;
-    border: none;
-    box-sizing: border-box;
-    color: black;
-    cursor: pointer;
-    outline: none;
-    padding: 12px 10px;
-    transition: .4s ease-in;
-    width: 10rem;
-}
-
-.add-edit--button:hover {
-    color: #54fffb;
-    background: white;
+.add-button:hover {
+  color: #fff;
+  background: rgb(0, 153, 255);
 }
 
 .add-input {
-    padding: 20px 0 10px 0;
+  width: 30vw;
 }
 
 .add--input--field {
-    background-color: white;
-    border: none;
-    border-radius: 16px;
-    box-sizing: border-box;
-    width: 90%;
-    min-height: 40px;
-    padding: 0 10px;
+  background-color: white;
+  border: none;
+  border-radius: 16px;
+  box-sizing: border-box;
+  width: 90%;
+  min-height: 40px;
+  padding: 10px;
 }

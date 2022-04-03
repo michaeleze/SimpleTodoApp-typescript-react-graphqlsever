@@ -1,7 +1,8 @@
-export interface IList {
+export interface IListItem{
   handleDeleteTask: (id: string, text: string) => void;
-
   handleOpenModal(id: string): void;
-
-  list?: any;
+  list?: [{
+    id: string;
+    text: string;
+  }];
 }

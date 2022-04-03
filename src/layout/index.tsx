@@ -5,11 +5,11 @@ import React, {
   useState,
 } from 'react';
 import './index.css';
-import { todoService } from "../service";
+import { todoService } from '../service';
 import AddTask from "../components/addTask";
 import Modal from "../components/modal";
 
-const ListTemplate = lazy(() => import('../components/list'));
+const ListItem = lazy(() => import('../components/ListItem'));
 
 const Layout: React.FC = () => {
   const [list, updateList] = useState<Array<{ id: string, text: string }>>([]);
@@ -32,7 +32,7 @@ const Layout: React.FC = () => {
     });
   };
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const text = event.target.value;
     addTask(text);
   };
@@ -63,27 +63,29 @@ const Layout: React.FC = () => {
   };
 
   return (
-    <div className="layout-container">
-      <Modal
-        handleCloseModal={handleCloseModal}
-        handleUpdateTask={handleUpdateTask}
-        modalItem={modalItem}
-        modal={modal}
-      />
-      <div className="layout-add">
-        <AddTask handleChange={handleChange} handleCreateNewTask={handleCreateNewTask}/>
-      </div>
-      <div className="layout-list">
-        <Suspense fallback={<div>Loading...</div>}>
-          <ListTemplate
-            handleDeleteTask={handleDeleteTask}
-            handleOpenModal={handleOpenModal}
-            list={list}
-          />
-        </Suspense>
+    <div className='wrapper'>
+      <div className="layout-container" data-testid="layout">
+        <Modal
+          handleCloseModal={handleCloseModal}
+          handleUpdateTask={handleUpdateTask}
+          modalItem={modalItem}
+          modal={modal}
+        />
+        <div className="layout-add">
+          <AddTask handleChange={handleChange} handleCreateNewTask={handleCreateNewTask} />
+        </div>
+        <div className="layout-list" data-testid="todo-list">
+          <Suspense fallback={<div>Loading List...</div>}>
+            <ListItem
+              handleDeleteTask={handleDeleteTask}
+              handleOpenModal={handleOpenModal}
+              list={list}
+            />
+          </Suspense>
+        </div>
       </div>
     </div>
   )
 };
 
-export default Layout;
+export default React.memo(Layout);

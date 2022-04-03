@@ -1,13 +1,10 @@
 import React from 'react';
-import './App.css';
-import Layout from "./layout";
+const Layout = React.lazy(() => import('./layout'));
 
-function App() {
-  return (
-    <div className="app">
-        <Layout />
-    </div>
-  );
-}
+const App = () => (
+  <React.Suspense fallback={<div>Loading Page...</div>}>
+    <Layout/>
+  </React.Suspense>
+  )
 
-export default App;
+export default React.memo(App);
