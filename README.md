@@ -2,26 +2,25 @@
 
 A simple todo app build using ReactJs, Typescript, GraphQL
 
-### Start Application locally
+### Run Application locally
 
-----
+Install:
+```
+npm install
+```
+
+Start:
+```
 npm start
-----
+```
 
-### Server repo
+Test:
+```
+npm run test
+```
 
-----
+### Back Server
+The application is connected to a live backend sever built using Graphql.
+
+repo:
 https://github.com/michaeleze/todo-graphql-server
-----
-
-### Server live
-
-----
-https://todo-app-server-123.herokuapp.com/
-----
-
-### Application live url
-
-----
-https://modest-mclean-3766fe.netlify.app/
-----

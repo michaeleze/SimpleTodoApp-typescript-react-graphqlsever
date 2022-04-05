@@ -11,25 +11,27 @@ const AddTask: React.FC<IAddTask> = (props) => {
 
   return (
     <table className="add-container" data-testid='add-task'>
-      <tr>
-        <td className="add-input">
-          <textarea
-            className="add-input--field"
-            onChange={handleChange}
-            placeholder='Add new task'
-            data-testid='add-task-text'
-          />
-        </td>
-        <td>
-          <button
-            className="add-button"
-            onClick={handleCreateNewTask}
-            data-testid='add-button'
-          >
-            <FaPlus />
-          </button>
-        </td>
-      </tr>
+      <tbody>
+        <tr>
+          <td className="add-input">
+            <textarea
+              className="add-input--field"
+              onChange={handleChange}
+              placeholder='Add new task'
+              data-testid="add-task-text"
+            />
+          </td>
+          <td>
+            <button
+              className="add-button"
+              onClick={handleCreateNewTask}
+              data-testid="add-button"
+            >
+              <FaPlus />
+            </button>
+          </td>
+        </tr>
+      </tbody>
     </table>
   );
 };

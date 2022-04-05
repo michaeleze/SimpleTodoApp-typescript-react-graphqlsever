@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "author": "Michael Eze<Michaeleze3@gmail.com>",
   "description": "A simple TODO app created using REACT and Graphql server",
-  "main": "old-server/index.js",
   "scripts": {
     "build": "react-scripts build",
     "start": "npm run build && react-scripts start",
@@ -33,7 +32,6 @@
   "dependencies": {
     "@types/react-modal": "^3.10.6",
     "graphql-yoga": "^1.18.3",
-    "install": "^0.13.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-icons": "^3.11.0",
@@ -49,6 +47,8 @@
     "@types/react-dom": "16.9.4",
     "@types/testing-library__jest-dom": "^5.9.2",
     "@types/testing-library__react": "^10.2.0",
+    "autoprefixer": "^10.4.4",
+    "install": "^0.13.0",
     "ts-jest": "^26.3.0"
   }
 }

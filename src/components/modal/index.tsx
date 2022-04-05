@@ -9,12 +9,10 @@ const Modal: React.FC<IModal> = (props) => {
     handleCloseModal,
     handleUpdateTask,
     modalItem,
-    modal,
+    isOpen,
   } = props;
 
-  const newTask = { id: modalItem?.id, task: value };
-
-  const Change = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleOnChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setValue(event.target.value);
   };
 
@@ -25,21 +23,29 @@ const Modal: React.FC<IModal> = (props) => {
   return (
     <ReactModal
       ariaHideApp={false}
-      isOpen={modal}
+      isOpen={isOpen}
       onAfterOpen={handleOnAfterOpen}
     >
       <table className="modal-content">
-        <tr>
-          <td className='modal-text'>
-            <textarea className="modal-input--field" onChange={Change} value={value} />
-          </td>
-          <td>
-            <div className='modal-options'>
-              <button className="button-accept" onClick={() => handleUpdateTask(newTask)} data-testid="button-accept"> Accept </button>
-              <button className="button-reject" onClick={handleCloseModal} data-testid="button-reject"> Cancel </button>
-            </div>
-          </td>
-        </tr>
+        <tbody>
+          <tr>
+            <td className='modal-text'>
+              <textarea className="modal-input--field" onChange={handleOnChange} value={value} data-testid="modal-input" />
+            </td>
+            <td>
+              <div className='modal-options'>
+                <button
+                  className="button-accept"
+                  onClick={() => handleUpdateTask({ id: modalItem?.id, task: value })}
+                  data-testid="button-accept"
+                >
+                  Accept
+                </button>
+                <button className="button-reject" onClick={handleCloseModal} data-testid="button-reject"> Cancel </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
       </table>
     </ReactModal>
   )

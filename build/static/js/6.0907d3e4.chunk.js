@@ -1,0 +1,2 @@
+(this.webpackJsonpTODOAPP=this.webpackJsonpTODOAPP||[]).push([[6],{35:function(t,a,c){"use strict";c.d(a,"a",(function(){return h}));var n=c(18);function h(t){return Object(n.a)({tag:"svg",attr:{viewBox:"0 0 24 24"},child:[{tag:"path",attr:{d:"M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"}}]})(t)}}}]);
+//# sourceMappingURL=6.0907d3e4.chunk.js.map

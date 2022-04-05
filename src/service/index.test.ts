@@ -1,42 +1,44 @@
-import { todo } from './index';
+// import { todoService } from './index';
 
-const state = [
-  {1: {id: 1, text: 'hello world'}},
-  {2: {id: 45, text: 'dummy text'}},
-  {3: {id: 13, text: 'mock data'}}
-];
+// jest.mock('./index');
 
-describe('ToDoService', () => {
-  const mockedFetch = jest.fn(fetch);
-  const spy = jest.spyOn(todo, 'getTaskList');
+// const state = [
+//   {1: {id: 1, text: 'hello world'}},
+//   {2: {id: 45, text: 'dummy text'}},
+//   {3: {id: 13, text: 'mock data'}}
+// ];
 
-  describe('getTaskList', () => {
-    beforeEach(() => {
-      mockedFetch.mockResolvedValue(state as any);
-    });
+// describe('ToDoService', () => {
+//   const mockedFetch = jest.fn(fetch);
+//   const spy = jest.spyOn(todoService, 'getTaskList');
 
-    it('Gets list of task', async () => {
-      expect(spy).resolves.toBe(state);
-    })
-  });
+//   describe('getTaskList', () => {
+//     beforeEach(() => {
+//       mockedFetch.mockResolvedValue(state as any);
+//     });
 
-  it('calls mock', () => {
-    const spy = jest.spyOn(todo, 'getTaskList');
+//     it('Gets list of task', async () => {
+//       expect(spy).resolves.toBe(state);
+//     })
+//   });
 
-    return todo.getTaskList().then((d) => d.json()).then((d) => {
+//   it('calls mock', () => {
+//     const spy = jest.spyOn(todo, 'getTaskList');
 
-      expect(d).toEqual({
-        id: 'id',
-        text: 'text'
-      })
-    })
-  });
+//     return todo.getTaskList().then((d) => d.json()).then((d) => {
 
-  it('calls mock', () => {
-    const spy = jest.spyOn(todo, 'createNewTask');
+//       expect(d).toEqual({
+//         id: 'id',
+//         text: 'text'
+//       })
+//     })
+//   });
 
-    todo.createNewTask('hello world');
+//   it('calls mock', () => {
+//     const spy = jest.spyOn(todo, 'createNewTask');
 
-    expect(spy).toBeCalledWith('hello world')
-  });
-});
+//     todo.createNewTask('hello world');
+
+//     expect(spy).toBeCalledWith('hello world')
+//   });
+// });

@@ -24,14 +24,16 @@ const ListItem: React.FC<any> = (props) => {
           item?.id &&
           <div key={item?.text}>
             <table className="list-container">
-              <tr>
+              <tbody>
+                <tr>
                   <td className="list-text">
-                  <p>{item?.text}</p>
-                </td>
-                <td>
+                    <p>{item?.text}</p>
+                  </td>
+                  <td>
                     <ListOptions {...options} />
-                </td>
-              </tr>
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </div>
         }

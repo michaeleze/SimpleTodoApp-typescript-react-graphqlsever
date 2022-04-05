@@ -21,19 +21,19 @@ describe('AddTask component', () => {
 
   it('should renders AddTask component', () => {
     const { getByTestId } = container;
-    expect(getByTestId('add-task')).toBeInTheDocument();
+    expect(getByTestId('add-button')).toBeInTheDocument();
   });
 
   it('should render input', () => {
     const { getByTestId } = container;
-    const input = getByTestId('add-task-input');
+    const input = getByTestId('add-task-text');
 
     expect(input).toBeInTheDocument();
   });
 
   it('should handleChange task', () => {
     const { getByTestId } = container;
-    const input = getByTestId('add-task-input');
+    const input = getByTestId('add-task-text');
 
     act(() => { Simulate.change(input), { target: { value: 'panda' } }});
 
@@ -42,10 +42,14 @@ describe('AddTask component', () => {
 
   it('should add task', () => {
     const { getByTestId } = container;
-    const button = getByTestId('create-task-input');
+    const button = getByTestId('add-button');
+    const input = getByTestId('add-task-text');
 
-    act(() => { fireEvent.click(button)});
+    act(() => {
+       fireEvent.change(input), { target: { value: 'panda' } };
+       fireEvent.click(button)
+      });
 
-    expect(todoService.addTask).toHaveBeenCalled();
+    expect(todoService.addTask).toHaveBeenCalledWith('panda');
   });
 });

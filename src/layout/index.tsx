@@ -14,7 +14,7 @@ const ListItem = lazy(() => import('../components/ListItem'));
 const Layout: React.FC = () => {
   const [list, updateList] = useState<Array<{ id: string, text: string }>>([]);
   const [task, addTask] = useState<string>(null as unknown as string);
-  const [modal, showModal] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const [modalItem, setmodalItem] = useState<any>();
 
   useEffect(() => {
@@ -53,13 +53,13 @@ const Layout: React.FC = () => {
   };
 
   const handleOpenModal = (id: string) => {
-    showModal(true)
+    setIsOpen(true)
     const item = list.find((item: any) => item.id === id)
     setmodalItem(item);
   };
 
   const handleCloseModal = () => {
-    showModal(false)
+    setIsOpen(false)
   };
 
   return (
@@ -69,7 +69,7 @@ const Layout: React.FC = () => {
           handleCloseModal={handleCloseModal}
           handleUpdateTask={handleUpdateTask}
           modalItem={modalItem}
-          modal={modal}
+          isOpen={isOpen}
         />
         <div className="layout-add">
           <AddTask handleChange={handleChange} handleCreateNewTask={handleCreateNewTask} />
