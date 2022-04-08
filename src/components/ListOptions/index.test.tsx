@@ -1,16 +1,16 @@
 import React from 'react';
 import { cleanup, fireEvent, render, RenderResult } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
-import AddTask from './index';
+import ListOptions from './index';
 import { Simulate, act } from 'react-dom/test-utils';
 
-describe('AddTask component', () => {
-  const handleChange = jest.fn();
+describe('List Options component', () => {
+  const handleOpenModal = jest.fn('10' => null);
   const handleCreateNewTask = jest.fn();
   let container: RenderResult<typeof import("@testing-library/dom/types/queries")>;
 
   beforeEach(() => {
-    container = render(<AddTask handleChange={handleChange} handleCreateNewTask={handleCreateNewTask
+    container = render(<ListOptions id='7' text='hello' handleChange={handleChange} handleCreateNewTask={handleCreateNewTask
     } />)
   });
 
